@@ -1,9 +1,21 @@
 @import '../../global.modules.scss';
 
+$colorDefault: #1698D9;
+$colorHover: #2EA8E6;
+
+$colorSelected: #D91667;
+$colorSelectedHover: #E52E7A;
+
+
+$colorUnavailable: #B3B3B3;
+$colorWeightUnavailable: #979797;
+
+$colorBottomDescrUnavailable: #FFFF66;
+
 $strokeSizeInPixels: 4; //ширина обводки карточки
 
 $cardWidth: 320px;
-$cardHeight: 509px;
+$cardHeight: 480px;
 
 $strokeSize: $strokeSizeInPixels * 2 * 100 / $cardWidth;
 $marginH: $strokeSize * $cardHeight / 200 * 1px;
@@ -20,20 +32,26 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
 
 .card {    
     @extend %cardSize;
-    padding: 0 40px;
+    margin: 0 40px 60px;
     z-index: 2;
     .back {
         @extend %cardSize;
         position: absolute;
         z-index: -1;
-        .svgNormal, .svgColored {
+        .svgNormal, .svgHoved, .svgSelected {
             position: absolute;
             top: 0;
         }
-        .svgColored {
+        .svgHoved {
             z-index: 10;
             path {
-                fill: red;
+                fill: $colorDefault;
+            }
+        }
+        .svgSelected {
+            z-index: 10;
+            path {
+                fill: $colorSelected;
             }
         }
         .svgNormal {
@@ -48,6 +66,127 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
     }
     .inner {
         @extend %cardSize;
+        position: relative;
+        padding-bottom: 14px;
+        cursor: pointer;
         background: url('media/cat.png') top $marginH * -1 left $strokeSizeInPixels * 1px no-repeat;
+        .topDescription {
+            padding: 21px 51px 5px;
+            color: #666666;
+            font-size: 16px;
+        }
+        .names {
+            padding: 0 48px 15px;
+            * {
+                margin: 0;
+                line-height: 1em;
+                font-weight: bold;
+                padding-bottom: 3px;
+            }
+            h1 {
+                font-size: 48px;              
+            }
+            h2 {
+                font-size: 24px;                   
+            }
+        }
+        .about {
+            padding: 0 48px 15px;
+            color: #666666;
+            font-size: 14px;
+            line-height: 16px;
+            * {
+                margin: 0;
+            }
+        }
+        .weight, .weightSelected {
+            background-color: $colorDefault;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 384px;
+            right: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            color: #ffffff;
+            div:nth-child(1) {
+                font-size: 42px;
+                line-height: 42px;
+            }
+            div:nth-child(2) {
+                font-size: 22px;
+                line-height: 22px;
+            }
+        }
+        .weight {
+            background-color: $colorDefault;
+        }
+        .weightSelected {
+            background-color: $colorSelected;
+        }
+    }  
+    .bottomDescription {
+        color: #ffffff;
+        font-size: 13px;
+        width: 100%;
+        text-align: center;
+        span {
+            color: #22A7E9;
+            text-decoration: none;
+            border-bottom: 1px dashed #22A7E9;
+            display: inline-block;
+            cursor: pointer;
+        }
     }
+      
+    &:hover {
+        .back {
+            .svgHoved {
+                path {
+                    fill: $colorHover;
+                }
+            }
+            .svgSelected {
+                path {
+                    fill: $colorSelectedHover;
+                }
+            }
+        }  
+        .inner {
+            .weight {
+                background-color: $colorHover;
+            }
+            .weightSelected {
+                background-color: $colorSelectedHover;
+            }
+        }
+    }
+}
+
+.unavailable {
+    pointer-events: none;
+    .back {
+        .svgHoved {
+            path {
+                fill: $colorUnavailable;
+            }
+        }   
+    }
+    .inner {
+        opacity: 50%;    
+        .topDescription, .names, .about  {
+            color: $colorUnavailable;
+        }
+        .weight {
+            background-color: $colorWeightUnavailable;
+        }
+    }
+    .bottomDescription {
+        color: $colorBottomDescrUnavailable;
+    }
+
 }

@@ -1,5 +1,6 @@
 @import './global.modules.scss';
 
+
 html, body, body>div {
     height: 100%;
 }
@@ -7,7 +8,7 @@ body {
     background: $main_bg_color;
     padding: 0%;
     margin: 0;
-    font-family: 'Roboto';
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

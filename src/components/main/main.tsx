@@ -8,6 +8,7 @@ export function Main() {
 
 	return (
 		<section id={C.showcase}>
+			<div id={C.title}>Ты сегодня покормил кота?</div>
 			{state.items!==undefined && state.items.map((item) => <Card {...item} key={item.id} />)}
 		</section>
 	)
