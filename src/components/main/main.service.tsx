@@ -1,29 +1,42 @@
 import { useState, useEffect } from 'react'
-import * as I from '../../store/storeInterfaces'
-import defaultStore from '../../store/defaultStore'
-import {getApi} from '../../api/getApi'
-import {uploadApi} from '../../api/uploadApi'
-import {deleteApi} from '../../api/deleteApi'
-import { UseMain } from './main.props'
+import { Item, UseMain } from './main.props'
 
 const useMain:UseMain = () => {    
+    const [data, setData] = useState<Item[]>()
 
-    const [data, setData] = useState<number>(1)
+    const loadJson = async (): Promise<any|string> => {
+        try {
+            const response = await fetch('/data.json', {method: 'GET'});
+            console.log(response)
+            if (response.status===200) {
+                return await response.json();
+            } else {
+                return String(response.status);
+            }
+        } catch (error) {
+            if (error) {
+                return (error as Error).message;
+            }
+        }
+        return "Error";
+    }
 
     useEffect(() => {
         console.log('welcome to main')
+        loadJson()
+            .then(result => {
+                if (typeof result!=='string') setData(result.items)
+                else console.error('Ошибка получения данных: '+result)
+            })
     }, [])
 
-    const sampleApi = () => {
-        return
-    }
 
     const state = {
-        sample: data,
+        items: data,
     }
 
     const api = {
-        sampleApi:sampleApi,
+        loadJson:loadJson,
     }
 
     return (

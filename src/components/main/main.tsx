@@ -1,11 +1,14 @@
-import defaultStore from '../../store/defaultStore'
+import Card from '../card'
 import useMain from "./main.service";
-import C from './content.module.scss'
+import C from './main.module.scss'
 
 export function Main() {
 	const [state, api] = useMain() 
+	console.log(state)
 
 	return (
-		<>hello {defaultStore.sample}</>
+		<section id={C.showcase}>
+			{state.items!==undefined && state.items.map((item) => <Card {...item} key={item.id} />)}
+		</section>
 	)
 }

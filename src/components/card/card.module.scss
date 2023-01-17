@@ -1,0 +1,53 @@
+@import '../../global.modules.scss';
+
+$strokeSizeInPixels: 4; //ширина обводки карточки
+
+$cardWidth: 320px;
+$cardHeight: 509px;
+
+$strokeSize: $strokeSizeInPixels * 2 * 100 / $cardWidth;
+$marginH: $strokeSize * $cardHeight / 200 * 1px;
+$marginW: $strokeSize * $cardWidth / 200 * 1px;
+
+%cardSize {
+    width: $cardWidth;
+    height: $cardHeight;
+}
+%svgSize {
+    width: $cardWidth / 100 * (100 - $strokeSize) * 1px;
+    height: $cardHeight / 100 * (100 - $strokeSize) * 1px;
+}
+
+.card {    
+    @extend %cardSize;
+    padding: 0 40px;
+    z-index: 2;
+    .back {
+        @extend %cardSize;
+        position: absolute;
+        z-index: -1;
+        .svgNormal, .svgColored {
+            position: absolute;
+            top: 0;
+        }
+        .svgColored {
+            z-index: 10;
+            path {
+                fill: red;
+            }
+        }
+        .svgNormal {
+            z-index: 11;
+            margin: $marginH $marginW;
+            @extend %svgSize;
+            svg {
+                @extend %svgSize;  
+                margin: -15px 0;              
+            }
+        }
+    }
+    .inner {
+        @extend %cardSize;
+        background: url('media/cat.png') top $marginH * -1 left $strokeSizeInPixels * 1px no-repeat;
+    }
+}
