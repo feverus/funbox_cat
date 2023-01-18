@@ -69,10 +69,21 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
         padding-bottom: 14px;
         cursor: pointer;
         background: url('media/cat.png') top $marginH * -1 left $strokeSizeInPixels * 1px no-repeat;
-        .topDescription {
+        .topDescription, .topDescriptionDefault {
             padding: 21px 51px 5px;
             color: #666666;
             font-size: 16px;
+            height: 16px;
+            div {
+                position: absolute;
+                width: $cardWidth - 80px;
+            }
+            .default {
+                opacity: 1;
+            }
+            .hover {
+                opacity: 0;
+            }
         }
         .names {
             padding: 0 48px 15px;
@@ -161,6 +172,14 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
             }
             .weightSelected {
                 background-color: $colorSelectedHover;
+            }
+            .topDescription {
+                .default {
+                    opacity: 0;
+                }
+                .hover {
+                    opacity: 1;
+                }
             }
         }
     }

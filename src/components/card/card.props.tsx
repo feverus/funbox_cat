@@ -4,6 +4,7 @@ export type StateType = {
     selected: boolean;
     mouseLeave: boolean;
     bottomDescription: string;
+    topDescriptionHover: string;
 };
 
 export type ApiType = {

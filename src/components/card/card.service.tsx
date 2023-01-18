@@ -7,6 +7,7 @@ const useCard:UseCard = ({available, bottomDescription, name}) => {
 
     const shortName = (name.length>1) ? name[1] : name[0]    
     const bottomDescriptionText = available ? bottomDescription : `Печалька, ${shortName} закончился.`
+    const topDescriptionHover = 'Котэ не одобряет?'
 
     useEffect(() => {
         console.log('card')
@@ -17,6 +18,7 @@ const useCard:UseCard = ({available, bottomDescription, name}) => {
         selected: selected,
         mouseLeave: mouseLeave,
         bottomDescription: bottomDescriptionText,
+        topDescriptionHover: topDescriptionHover,
     }
 
     const api = {
@@ -25,7 +27,7 @@ const useCard:UseCard = ({available, bottomDescription, name}) => {
             setSelected(!selected)
         },
         moveMouseOut: () => {
-            setMouseLeave(true)
+            if (selected) setMouseLeave(true)
         },
     }
 

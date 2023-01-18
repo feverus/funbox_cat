@@ -8,11 +8,13 @@ import { BottomButon } from "./components/BottomButon"
 export function Card(item:Item) {
 	const [state, api] = useCard(item) 
 	
-	let backStyle = C.svgBorder
+	let backStyle = C.svgBorder, descrStyle = C.topDescriptionDefault
 	if (state.selected) {
 		backStyle = (state.mouseLeave) ? C.svgSelected : C.svgSelectedBeforeMouseLeave
+		if (state.mouseLeave) descrStyle = C.topDescription
 	}
 
+	console.log(state)
 	return (
 		<div className={item.available ? C.card : C.card+' '+C.unavailable}
 			>
@@ -23,8 +25,9 @@ export function Card(item:Item) {
 			<div className={C.inner}
 				onClick={api.select}
 				onMouseLeave={api.moveMouseOut}>
-				<div className={C.topDescription}>
-					{item.topDescription}
+				<div className={descrStyle}>
+					<div className={C.default}>{item.topDescription}</div>
+					<div className={C.hover}>{state.topDescriptionHover}</div>
 				</div>
 				<div className={C.names}>
 					{item.name.map((part, index) => <Name part={part} index={index} key={'name_' + part} />)}
