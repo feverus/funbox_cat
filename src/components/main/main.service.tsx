@@ -6,7 +6,7 @@ const useMain:UseMain = () => {
 
     const loadJson = async (): Promise<any|string> => {
         try {
-            const response = await fetch('/data.json', {method: 'GET'});
+            const response = await fetch('/data_funbox_cat.json', {method: 'GET'});
             console.log(response)
             if (response.status===200) {
                 return await response.json();
