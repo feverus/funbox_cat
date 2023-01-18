@@ -3,6 +3,7 @@ import { UseCard } from './card.props'
 
 const useCard:UseCard = ({available, bottomDescription, name}) => {    
     const [selected, setSelected] = useState<boolean>(false)
+    const [mouseLeave, setMouseLeave] = useState<boolean>(false)
 
     const shortName = (name.length>1) ? name[1] : name[0]    
     const bottomDescriptionText = available ? bottomDescription : `Печалька, ${shortName} закончился.`
@@ -14,11 +15,18 @@ const useCard:UseCard = ({available, bottomDescription, name}) => {
 
     const state = {
         selected: selected,
+        mouseLeave: mouseLeave,
         bottomDescription: bottomDescriptionText,
     }
 
     const api = {
-        select: () => setSelected(!selected),
+        select: () => {
+            if (selected) setMouseLeave(false)
+            setSelected(!selected)
+        },
+        moveMouseOut: () => {
+            setMouseLeave(true)
+        },
     }
 
     return (

@@ -2,11 +2,13 @@ import { Item } from '../main'
 
 export type StateType = {
     selected: boolean;
+    mouseLeave: boolean;
     bottomDescription: string;
 };
 
 export type ApiType = {
     select: () => void;
+    moveMouseOut: () => void;
 };
 
 export type UseCard = (item:Item) => [

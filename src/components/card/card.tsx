@@ -7,17 +7,22 @@ import { BottomButon } from "./components/BottomButon"
 
 export function Card(item:Item) {
 	const [state, api] = useCard(item) 
-	console.log(state)
 	
+	let backStyle = C.svgBorder
+	if (state.selected) {
+		backStyle = (state.mouseLeave) ? C.svgSelected : C.svgSelectedBeforeMouseLeave
+	}
+
 	return (
 		<div className={item.available ? C.card : C.card+' '+C.unavailable}
 			>
 			<div className={C.back}>			
-				<ReactSVG className={state.selected ? C.svgSelected : C.svgHovered } src="media/back.svg" />
+				<ReactSVG className={backStyle} src="media/back.svg" />
 				<ReactSVG className={C.svgNormal} src="media/back.svg" />
 			</div>
 			<div className={C.inner}
-				onClick={api.select}>
+				onClick={api.select}
+				onMouseLeave={api.moveMouseOut}>
 				<div className={C.topDescription}>
 					{item.topDescription}
 				</div>
