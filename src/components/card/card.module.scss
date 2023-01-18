@@ -38,11 +38,11 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
         @extend %cardSize;
         position: absolute;
         z-index: -1;
-        .svgNormal, .svgHoved, .svgSelected {
+        .svgNormal, .svgHovered, .svgSelected {
             position: absolute;
             top: 0;
         }
-        .svgHoved {
+        .svgHovered {
             z-index: 10;
             path {
                 fill: $colorDefault;
@@ -59,8 +59,7 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
             margin: $marginH $marginW;
             @extend %svgSize;
             svg {
-                @extend %svgSize;  
-                margin: -15px 0;              
+                @extend %svgSize;              
             }
         }
     }
@@ -145,7 +144,7 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
       
     &:hover {
         .back {
-            .svgHoved {
+            .svgHovered {
                 path {
                     fill: $colorHover;
                 }
@@ -170,7 +169,7 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
 .unavailable {
     pointer-events: none;
     .back {
-        .svgHoved {
+        .svgHovered {
             path {
                 fill: $colorUnavailable;
             }

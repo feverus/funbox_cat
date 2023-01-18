@@ -20,20 +20,24 @@
 
 #showcase {
     @extend %centered;
-    background: url('media/Pattern@2x.png');  
+    height: auto;
+    min-height: 100%;
+    background: top center url('media/Pattern@2x.png');  
     background-attachment: fixed;  
     @media(max-width: 1280px) {
-        background: url('media/Pattern.png');
+        background: top center url('media/Pattern.png');
         background-attachment: fixed;
     }
     flex-wrap: wrap;
     &:after {
         @extend %centered;
         content: "";
-        background: linear-gradient(black 0%, rgba(0, 0, 0, 0.0001) 50%, black 100%);
+        background: top center linear-gradient(black 0%, rgba(0, 0, 0, 0.0001) 50%, black 100%);
         opacity: 50%;
         position: fixed;
+        top: 0;
         z-index: 0;
+        pointer-events: none;
     }
     #title {
         display: flex;    
@@ -41,8 +45,9 @@
         align-items: center;
         font-family: Exo, Arial, Helvetica, sans-serif;
         color: #FFFFFF;
+        text-align: center;
         flex: 1 1 100%;
-        padding: 36px 0 24px;
+        padding: 36px 16px 24px;
         font-size: 36px;
         line-height: 44px;
     }
