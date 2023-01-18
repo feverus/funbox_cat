@@ -34,7 +34,7 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
     @extend %cardSize;
     margin: 0 40px 60px;
     z-index: 2;
-
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     .back {
         @extend %cardSize;
         position: absolute;

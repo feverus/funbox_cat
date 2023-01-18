@@ -15,14 +15,18 @@ export function Card(item:Item) {
 	}
 
 	return (
-		<div className={item.available ? C.card : C.card+' '+C.unavailable}
+		<div className={item.available ? C.card : C.card+' '+C.unavailable} 
 			>
 			<div className={C.back}>			
 				<ReactSVG className={backStyle} src="media/back.svg" />
 				<ReactSVG className={C.svgNormal} src="media/back.svg" />
 			</div>
+
 			<div className={C.inner}
-				onClick={api.select}
+				onClick={(e) => {
+					e.preventDefault()
+					api.select()
+				}}
 				onMouseLeave={api.moveMouseOut}>
 				<div className={descrStyle}>
 					<div className={C.default}>{item.topDescription}</div>
@@ -42,7 +46,8 @@ export function Card(item:Item) {
 					<div>{item.weight}</div>
 					<div>кг</div>
 				</div>
-			</div>	
+			</div>
+				
 			<div className={item.available ? C.bottomDescription : C.bottomDescription+' '+C.unavailable}>
 				<div>{(!state.selected && item.available) ? <BottomButon select={api.select}/> : state.bottomDescription }</div>
 			</div>					
