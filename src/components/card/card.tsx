@@ -14,7 +14,6 @@ export function Card(item:Item) {
 		if (state.mouseLeave) descrStyle = C.topDescription
 	}
 
-	console.log(state)
 	return (
 		<div className={item.available ? C.card : C.card+' '+C.unavailable}
 			>
@@ -30,10 +29,14 @@ export function Card(item:Item) {
 					<div className={C.hover}>{state.topDescriptionHover}</div>
 				</div>
 				<div className={C.names}>
-					{item.name.map((part, index) => <Name part={part} index={index} key={'name_' + part} />)}
+					{item.name.map((part, index) => 
+						<Name part={part} index={index} key={'name_' + part} />
+					)}
 				</div>
 				<div className={C.about}>
-					{item.about.map((part) => <p key={'about' + part}>{part}</p>)}
+					{item.about.map((part) => 
+						<p key={'about' + part}>{part}</p>
+					)}
 				</div>
 				<div className={state.selected ? C.weightSelected : C.weight}>
 					<div>{item.weight}</div>

@@ -24,11 +24,13 @@
     min-height: 100%;
     background: top center url('media/Pattern@2x.png');  
     background-attachment: fixed;  
+    flex-wrap: wrap;
+    
     @media(max-width: 1280px) {
         background: top center url('media/Pattern.png');
         background-attachment: fixed;
     }
-    flex-wrap: wrap;
+
     &:after {
         @extend %centered;
         content: "";
@@ -39,6 +41,7 @@
         z-index: 0;
         pointer-events: none;
     }
+    
     #title {
         display: flex;    
         justify-content: center;

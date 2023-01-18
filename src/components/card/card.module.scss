@@ -34,6 +34,7 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
     @extend %cardSize;
     margin: 0 40px 60px;
     z-index: 2;
+
     .back {
         @extend %cardSize;
         position: absolute;
@@ -44,25 +45,20 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
         }
         .svgBorder {
             z-index: 10;
-            path {
-                fill: $colorDefault;
-            }
+            path {fill: $colorDefault;}
         }
         .svgSelected, .svgSelectedBeforeMouseLeave {
             z-index: 10;
-            path {
-                fill: $colorSelected;
-            }
+            path {fill: $colorSelected;}
         }
         .svgNormal {
             z-index: 11;
             margin: $marginH $marginW;
             @extend %svgSize;
-            svg {
-                @extend %svgSize;              
-            }
+            svg {@extend %svgSize;}
         }
     }
+
     .inner {
         @extend %cardSize;
         position: relative;
@@ -78,12 +74,8 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
                 position: absolute;
                 width: $cardWidth - 80px;
             }
-            .default {
-                opacity: 1;
-            }
-            .hover {
-                opacity: 0;
-            }
+            .default {opacity: 1;}
+            .hover {opacity: 0;}
         }
         .names {
             padding: 0 48px 15px;
@@ -93,21 +85,16 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
                 font-weight: bold;
                 padding-bottom: 3px;
             }
-            h1 {
-                font-size: 48px;              
-            }
-            h2 {
-                font-size: 24px;                   
-            }
+            h1 {font-size: 48px;}
+            h2 {font-size: 24px;}
+            h3 {font-size: 20px;}
         }
         .about {
             padding: 0 48px 15px;
             color: #666666;
             font-size: 14px;
             line-height: 16px;
-            * {
-                margin: 0;
-            }
+            * {margin: 0;}
         }
         .weight, .weightSelected {
             background-color: $colorDefault;
@@ -132,13 +119,10 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
                 line-height: 22px;
             }
         }
-        .weight {
-            background-color: $colorDefault;
-        }
-        .weightSelected {
-            background-color: $colorSelected;
-        }
+        .weight {background-color: $colorDefault;}
+        .weightSelected {background-color: $colorSelected;}
     }  
+
     .bottomDescription {
         color: #ffffff;
         font-size: 13px;
@@ -156,30 +140,18 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
     &:hover {
         .back {
             .svgBorder {
-                path {
-                    fill: $colorHover;
-                }
+                path {fill: $colorHover;}
             }
             .svgSelected {
-                path {
-                    fill: $colorSelectedHover;
-                }
+                path {fill: $colorSelectedHover;}
             }
         }  
         .inner {
-            .weight {
-                background-color: $colorHover;
-            }
-            .weightSelected {
-                background-color: $colorSelectedHover;
-            }
+            .weight {background-color: $colorHover;}
+            .weightSelected {background-color: $colorSelectedHover;}
             .topDescription {
-                .default {
-                    opacity: 0;
-                }
-                .hover {
-                    opacity: 1;
-                }
+                .default {opacity: 0;}
+                .hover {opacity: 1;}
             }
         }
     }
@@ -189,22 +161,13 @@ $marginW: $strokeSize * $cardWidth / 200 * 1px;
     pointer-events: none;
     .back {
         .svgBorder {
-            path {
-                fill: $colorUnavailable;
-            }
+            path {fill: $colorUnavailable;}
         }   
     }
     .inner {
         opacity: 50%;    
-        .topDescription, .names, .about  {
-            color: $colorUnavailable;
-        }
-        .weight {
-            background-color: $colorWeightUnavailable;
-        }
+        .topDescription, .names, .about {color: $colorUnavailable;}
+        .weight {background-color: $colorWeightUnavailable;}
     }
-    .bottomDescription {
-        color: $colorBottomDescrUnavailable;
-    }
-
+    .bottomDescription {color: $colorBottomDescrUnavailable;}
 }

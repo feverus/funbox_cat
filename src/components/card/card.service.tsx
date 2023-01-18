@@ -9,11 +9,6 @@ const useCard:UseCard = ({available, bottomDescription, name}) => {
     const bottomDescriptionText = available ? bottomDescription : `Печалька, ${shortName} закончился.`
     const topDescriptionHover = 'Котэ не одобряет?'
 
-    useEffect(() => {
-        console.log('card')
-    }, [])
-
-
     const state = {
         selected: selected,
         mouseLeave: mouseLeave,
